@@ -1,0 +1,24 @@
+const transpose = require("../../async/matrix_transposition");
+
+const wordSearch = (letters, word) => { 
+    const horizontalJoin = letters.map(row => row.join(''));
+    for (const row of horizontalJoin) {
+        if (row.includes(word)) {
+            return true;
+        }
+    }
+
+    const verticalJoin = transpose(letters).map(column => column.join(''));
+    for (const column of verticalJoin) {
+        if (column.includes(word)) {
+            return true;
+        }
+    }
+
+    return false;
+};
+
+module.exports = wordSearch;
+
+
+//pair programming partner @Darshita-04 Darshita
